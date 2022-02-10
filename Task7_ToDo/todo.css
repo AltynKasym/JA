@@ -5,6 +5,7 @@
   font-family: "Montserrat", sans-serif;
 }
 body {
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +48,7 @@ label {
 } */
 
 .send-form {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   padding: 20px;
   min-height: 12rem;
   border: 1px solid rgb(201, 201, 201);
@@ -84,16 +85,24 @@ label {
 }
 
 .alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
   position: absolute;
   top: 5%;
   right: 5%;
   text-align: center;
-  width: 20rem;
+  width: 15rem;
   border-radius: 5px;
   display: none;
   transition: 0.3s;
   border: 1px solid rgb(201, 201, 201);
   background-color: rgb(240, 95, 95);
+}
+.alert h3 {
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 .done {
@@ -101,8 +110,7 @@ label {
   top: 5%;
   right: 5%;
   text-align: center;
-  /* height: 3rem; */
-  width: 20rem;
+  width: 15rem;
   border-radius: 5px;
   display: none;
   transition: 0.3s;
@@ -110,14 +118,21 @@ label {
   background-color: rgb(95, 240, 107);
 }
 
+.done h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
 @media screen and (max-width: 1100px) {
   .alert {
+    /* height: 3rem; */
     top: 2%;
     left: 50%;
     transform: translate(-50%, 0);
   }
 
   .done {
+    /* height: 3rem; */
     top: 2%;
     left: 50%;
     transform: translate(-50%, 0);

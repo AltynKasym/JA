@@ -32,7 +32,7 @@ window.addEventListener("load", function () {
   });
 
   function alertEmptyTodo() {
-    let timerId = setInterval(() => (alert.style.display = "block"), 100);
+    let timerId = setInterval(() => (alert.style = `display: block;`), 100);
     setTimeout(() => {
       clearInterval(timerId);
       alert.style.display = "none";
