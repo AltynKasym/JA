@@ -25,7 +25,7 @@ window.addEventListener("load", function () {
         todoItem.addEventListener("click", () => {
           todoItem.remove();
           doneTodo();
-          doneText.textContent = "Молодец, что сделал!";
+          doneText.textContent = "Молодец, что сделал(а)!";
         });
       });
     }
