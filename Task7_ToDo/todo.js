@@ -3,10 +3,14 @@ window.addEventListener("load", function () {
     todo = document.querySelector(".input-todo"),
     button = document.querySelector(".button"),
     todoList = document.querySelector(".todo-list"),
+    noToDO = document.querySelector(".todo-list p"),
     alert = document.querySelector(".alert"),
-    alertText = document.querySelector(".alert h3");
-  (done = document.querySelector(".done")),
-    (doneText = document.querySelector(".done h3"));
+    alertText = document.querySelector(".alert h3"),
+    priority = document.querySelectorAll(".priority-list input"),
+    done = document.querySelector(".done"),
+    doneText = document.querySelector(".done h3"),
+    todoItemDone = document.querySelector(".todo-item-done");
+  let todoPriority = "";
 
   button.addEventListener("click", function (e) {
     e.preventDefault();
@@ -16,16 +20,33 @@ window.addEventListener("load", function () {
     } else {
       todoListData.push(todo.value);
       todoListData.forEach((item) => {
+        priority.forEach((priorityItem) => {
+          if (priorityItem.checked == true) {
+            todoPriority = priorityItem;
+          }
+        });
+        if (todoList.childNodes.length > 1) {
+          noToDO.style.display = "none";
+        } else noToDO.style.display = "block";
+
         const todoItem = document.createElement("div");
-        todoItem.setAttribute("class", "todo-item");
+        todoItem.setAttribute(
+          "class",
+          `priority${todoPriority.value} todo-item`
+        );
+
         todoList.appendChild(todoItem);
-        todoItem.textContent = item;
+        todoItem.textContent = ` ${item}`;
         todoListData.shift();
         todo.value = "";
-        todoItem.addEventListener("click", () => {
+
+        todoItem.addEventListener("dblclick", () => {
           todoItem.remove();
           doneTodo();
-          doneText.textContent = "Молодец, что сделал(а)!";
+          doneText.textContent = "Удалено";
+        });
+        todoItem.addEventListener("click", () => {
+          todoItem.classList.toggle("todo-item-done");
         });
       });
     }

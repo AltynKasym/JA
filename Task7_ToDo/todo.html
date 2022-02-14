@@ -13,18 +13,30 @@
   </head>
   <body>
     <form method="GET" class="send-form block">
-      <label for="todo">New Todo<br /></label>
+      <label for="todo" class="add-todo">New Todo<br /></label>
       <input
         type="text"
         placeholder="Что нужно сделать?"
         id="todo"
         class="input-todo"
       />
+      <div class="priority-list">
+        <input type="radio" id="hight" name="contact" value="1" />
+        <label class="priority priority1" for="hight">hight</label>
+        <input type="radio" id="medium" name="contact" value="2" checked />
+        <label class="priority priority2" for="medium">medium</label>
+        <input type="radio" id="low" name="contact" value="3" />
+        <label class="priority priority3" for="low">low</label>
+      </div>
+
       <button class="button">Add Todo</button>
     </form>
     <div class="my-todo-list block">
       <h2>My Todo List</h2>
-      <div class="todo-list"></div>
+      <span>Click - done, DoubleClick - delete</span>
+      <div class="todo-list">
+        <p class="todo-item priority">Пока нет записей</p>
+      </div>
     </div>
     <div class="alert">
       <h3></h3>
