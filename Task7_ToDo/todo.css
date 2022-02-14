@@ -96,7 +96,7 @@ label {
   align-items: center;
   justify-content: center;
   align-self: center;
-  position: absolute;
+  position: fixed;
   top: 5%;
   right: 5%;
   text-align: center;
@@ -115,7 +115,7 @@ label {
 }
 
 .done {
-  position: absolute;
+  position: fixed;
   top: 5%;
   right: 5%;
   text-align: center;
