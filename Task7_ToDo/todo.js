@@ -1,6 +1,5 @@
 window.addEventListener("load", function () {
-  const todoListData = [],
-    todo = document.querySelector(".input-todo"),
+  const todo = document.querySelector(".input-todo"),
     button = document.querySelector(".button"),
     todoList = document.querySelector(".todo-list"),
     noToDO = document.querySelector(".todo-list p"),
@@ -9,7 +8,8 @@ window.addEventListener("load", function () {
     priority = document.querySelectorAll(".priority-list input"),
     done = document.querySelector(".done"),
     doneText = document.querySelector(".done h3"),
-    todoItemDone = document.querySelector(".todo-item-done");
+    test = document.querySelector(".test"),
+    todoItem = document.querySelector(".todo-item");
   let todoPriority = "";
 
   button.addEventListener("click", function (e) {
@@ -18,8 +18,7 @@ window.addEventListener("load", function () {
       alertEmptyTodo();
       alertText.textContent = "Введите список";
     } else {
-      todoListData.push(todo.value);
-      todoListData.forEach((item) => {
+      for (item = 1; item <= todo.value.length; item++) {
         priority.forEach((priorityItem) => {
           if (priorityItem.checked == true) {
             todoPriority = priorityItem;
@@ -34,13 +33,12 @@ window.addEventListener("load", function () {
           "class",
           `priority${todoPriority.value} todo-item`
         );
-
         todoList.appendChild(todoItem);
-        todoItem.textContent = ` ${item}`;
-        todoListData.shift();
-        todo.value = "";
+        todoItem.textContent = `${todo.value}`;
+               todo.value = "";
+        priority[1].checked = true;
 
-        todoItem.addEventListener("dblclick", () => {
+                todoItem.addEventListener("dblclick", () => {
           todoItem.remove();
           doneTodo();
           doneText.textContent = "Удалено";
@@ -48,9 +46,9 @@ window.addEventListener("load", function () {
         todoItem.addEventListener("click", () => {
           todoItem.classList.toggle("todo-item-done");
         });
-      });
+      }
     }
-  });
+      });
 
   function alertEmptyTodo() {
     let timerId = setInterval(() => (alert.style = `display: block;`), 100);
