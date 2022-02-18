@@ -7,48 +7,57 @@ window.addEventListener("load", function () {
     alertText = document.querySelector(".alert h3"),
     priority = document.querySelectorAll(".priority-list input"),
     done = document.querySelector(".done"),
-    doneText = document.querySelector(".done h3"),
-    test = document.querySelector(".test"),
-    todoItem = document.querySelector(".todo-item");
-  let todoPriority = "";
+    doneText = document.querySelector(".done h3");
 
   button.addEventListener("click", function (e) {
     e.preventDefault();
+
+    // Проверка на содержимое символа
+
     if (todo.value.trim().length === 0) {
       alertEmptyTodo();
       alertText.textContent = "Введите список";
     } else {
-      for (item = 1; item <= todo.value.length; item++) {
-        priority.forEach((priorityItem) => {
-          if (priorityItem.checked == true) {
-            todoPriority = priorityItem;
-          }
-        });
-        if (todoList.childNodes.length > 1) {
-          noToDO.style.display = "none";
-        } else noToDO.style.display = "block";
+      // Разделение на приоритеты
 
-        const todoItem = document.createElement("div");
-        todoItem.setAttribute(
-          "class",
-          `priority${todoPriority.value} todo-item`
-        );
-        todoList.appendChild(todoItem);
-        todoItem.textContent = `${todo.value}`;
-               todo.value = "";
-        priority[1].checked = true;
-
-                todoItem.addEventListener("dblclick", () => {
-          todoItem.remove();
-          doneTodo();
-          doneText.textContent = "Удалено";
-        });
-        todoItem.addEventListener("click", () => {
-          todoItem.classList.toggle("todo-item-done");
-        });
-      }
-    }
+      priority.forEach((priorityItem) => {
+        if (priorityItem.checked == true) {
+          todoPriority = priorityItem;
+        }
       });
+
+      // Сообщение если пока нет записей
+
+      if (todoList.childNodes.length > 1) {
+        noToDO.style.display = "none";
+      } else noToDO.style.display = "block";
+
+      // Добавление записей в список
+
+      const todoItem = document.createElement("div");
+      todoItem.setAttribute("class", `priority${todoPriority.value} todo-item`);
+      todoList.appendChild(todoItem);
+      todoItem.textContent = `${todo.value}`;
+      todo.value = "";
+      priority[1].checked = true;
+
+      // Удаление записей из списка
+
+      todoItem.addEventListener("dblclick", () => {
+        todoItem.remove();
+        doneTodo();
+        doneText.textContent = "Удалено";
+      });
+
+      // Перечеркивание выполненнных записей
+
+      todoItem.addEventListener("click", () => {
+        todoItem.classList.toggle("todo-item-done");
+      });
+    }
+  });
+
+  // Сообщение при пустом вводе
 
   function alertEmptyTodo() {
     let timerId = setInterval(() => (alert.style = `display: block;`), 100);
@@ -57,6 +66,8 @@ window.addEventListener("load", function () {
       alert.style.display = "none";
     }, 2000);
   }
+
+  // Сообщение при удалении записей
 
   function doneTodo() {
     let timerId = setInterval(() => (done.style.display = "block"), 100);

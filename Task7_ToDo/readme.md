@@ -1,1 +1,1 @@
-https://altynkasym.github.io/JA/Task7_ToDo/todo.html
+https://altynkasym.github.io/mini-projects/To-Do/todo.html
