@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
       guesses--;
       console.log(input.value);
       if (guesses === 0 || input.value == num) {
-        submit.textContent = "Новая игра  ";
+        submit.textContent = "Новая игра";
         input.disabled = true;
         input.style.border = "2px solid green";
 
@@ -35,9 +35,9 @@ window.addEventListener("DOMContentLoaded", () => {
           location.reload();
         });
       } else if (input.value > num) {
-        message.textContent = "Введите число поменьше";
+        message.textContent = `Введите число поменьше. У Вас осталось попыток: ${guesses}.`;
       } else {
-        message.textContent = "Введите число побольше";
+        message.textContent = `Введите число побольше. У Вас осталось попыток: ${guesses}.`;
       }
       if (guesses === 0) {
         message.textContent = `Вы проиграли. Спрятанное число ${num}`;
