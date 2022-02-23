@@ -75,3 +75,5 @@ avatar.style = `width:11%; border-radius:100%;border:1px solid #fff; margin: 0 2
 avatarName.style = `padding-left:5px`;
 linkAvatar.style = `text-decoration:none; color:#fff`;
 footer.style = `display:flex; align-items:center`;
+
+console.log("b" + "a" + +"a" + "a");
