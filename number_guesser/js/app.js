@@ -27,10 +27,18 @@ window.addEventListener("DOMContentLoaded", () => {
       if (guesses === 0 || input.value == num) {
         submit.textContent = "Новая игра";
         input.disabled = true;
-        input.style.border = "2px solid green";
 
-        if (input.value == num) message.textContent = "Правильно";
-        message.style.color = "green";
+        if (guesses === 0) {
+          input.style.border = "2px solid red";
+          message.style.color = "red";
+          message.textContent = `Вы проиграли. Спрятанное число ${num}`;
+        }
+
+        if (input.value == num) {
+          message.textContent = "Правильно";
+          input.style.border = "2px solid green";
+        }
+
         submit.addEventListener("click", () => {
           location.reload();
         });
@@ -39,15 +47,8 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         message.textContent = `Введите число побольше. У Вас осталось попыток: ${guesses}.`;
       }
-      if (guesses === 0) {
-        message.textContent = `Вы проиграли. Спрятанное число ${num}`;
-        input.disabled = true;
-        input.style.border = "2px solid red";
-        message.style.color = "red";
-      }
 
       input.value = "";
-      console.log(guesses);
     }
   }
 });
